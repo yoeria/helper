@@ -1,2 +1,3 @@
 # helper
-go cmd helper: personal utilities
+
+golang cli helper: personal utilities
