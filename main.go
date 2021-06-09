@@ -1,6 +1,6 @@
 package main
 
-import "helper-cli/cmd"
+import "github.com/yoeria/helper/cmd"
 
 func main() {
 	cmd.Execute()
