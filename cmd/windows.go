@@ -24,7 +24,7 @@ var windowsCmd = &cobra.Command{
 		
 		// explanation on indexing of slices in golang 
 		// https://www.golangprograms.com/how-to-get-first-or-last-element-of-slice-in-golang.html
-		minutes := args[len(args)-1]
+		minutes := "0"
 		cmd.Execute(shutdownTimer(minutes))
 	}, 
 	Aliases: []string{"win","w"},
@@ -32,8 +32,7 @@ var windowsCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(windowsCmd)
-	windowsCmd.PersistentFlags().String("shutdown", "", "A help for foo")
-	windowsCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	windowsCmd.PersistentFlags().String("shutdown", "0", "Use 'now' or any time in minutes ")
 }
 
 func shutdownTimer(minutes string) {
