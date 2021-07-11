@@ -30,3 +30,10 @@ golang cli helper: personal utilities
   initialize things such as
   * **github credentials** (github-cli && git [user. name && user.email])
   * insert **~/.zshrc** for both the user *root* and the *active* user
+
+  <br>
+
+* **windows computer management shortcuts**
+  * **shutdown timer** (subcommand shutdown)
+    * in windows this is the alias used for shutdown (time in seconds)
+    alias shutdownTimerAsArgInSeconds=`'shutdown.exe -s -f -t $SECONDS'`
