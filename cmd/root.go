@@ -27,6 +27,7 @@ var rootCmd = &cobra.Command{
 // This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
 	cobra.CheckErr(rootCmd.Execute())
+	initConfig()
 }
 
 func init() {
@@ -41,6 +42,9 @@ func init() {
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+
+	// Set empty license
+	viper.SetDefault("license", "")
 }
 
 // initConfig reads in config file and ENV variables if set.
@@ -53,9 +57,15 @@ func initConfig() {
 		home, err := homedir.Dir()
 		cobra.CheckErr(err)
 
-		// Search config in home directory with name ".helper" (without extension).
+		// Search config in executable directory for local *testing* config
+		// (could also be used normally in a workingenvironment)
+		currentDir,err := os.Getwd()
+		cobra.CheckErr(err)
+		viper.AddConfigPath(currentDir)
+
+		// Search config in home directory with name ".helper.yaml" (with extension for clarity on formatting).
 		viper.AddConfigPath(home)
-		viper.SetConfigName(".helper")
+		viper.SetConfigName(".helper.yaml")
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match
